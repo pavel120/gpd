@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HW ROV</title>
+    <meta charset="utf-8">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="navbar navbar-static-top navbar-default">
+      <div class="container">
+        <button class="navbar-toggle">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">HW Remotely Operated Underwater Vehicle</a>
+        <div class="nav-collapse">
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+	
+	<br>
+	
+	<button type="button" onclick="window.requestAnimationFrame(gameLoop)">Connect Controller</button>
+<h1>Hello Pavel</h1>
+
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type=text/javascript>	
+	
+    var socket = io.connect('http://localhost:8080');   
+	
+  var gamepadSupportAvailable = !!navigator.webkitGetGamepads || !!navigator.webkitGamepads	;
+	if (gamepadSupportAvailable) {
+	    var gamepad = navigator.getGamepads()[0]
+		document.write("Supported");
+          socket.send('Supported')    } 		  
+		else {
+          document.write('Not Supported');
+	};
+	
+var fps = 100;
+var myReq;
+var myVar;
+	function gameLoop() {
+	  myVar = setTimeout(function() {
+	  myReq = window.requestAnimationFrame(gameLoop);
+    var gamepad = navigator.getGamepads()[0] ;
+	  //        socket.send(gamepad)
+	  var joyrx = Math.round((gamepad.axes[2] + 1)*255);
+	  var joyry = Math.round((gamepad.axes[3] + 1)*255);
+	  var joylx = Math.round((gamepad.axes[0] + 1)*255);
+	  var joyly = Math.round((gamepad.axes[1] + 1)*255);  
+	  var trigl = Math.round(gamepad.buttons[6].value *255);
+	  var trigr = Math.round(gamepad.buttons[7].value *255);
+          socket.send(gamepad.buttons[9].value+','+gamepad.buttons[8].value+','+joyrx+','+joyry+','+
+		  joylx+','+joyly+','+trigl+','+trigr+','+gamepad.buttons[14].value+
+		  ','+gamepad.buttons[12].value+','+gamepad.buttons[15].value+','+gamepad.buttons[13].value+','+gamepad.buttons[5].value+','+
+			gamepad.buttons[4].value+',');       
+	      }, 1000 / fps);
+    };
+	
+
+
+    </script>
+  </body>
+</html>

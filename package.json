@@ -1,0 +1,9 @@
+{
+  "name": "rc-car-controller",
+  "version": "0.1.0",
+  "description": "Control a robot via the web using socket.io and http calls",
+  "dependencies": {
+    "express": "^4.4.3",
+    "socket.io": "^1.0.4"
+  }
+}
