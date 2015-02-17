@@ -36,14 +36,14 @@
 	
     var socket = io.connect('http://localhost:8080');   
 	
-  var gamepadSupportAvailable = !!navigator.webkitGetGamepads || !!navigator.webkitGamepads	;
+/*  var gamepadSupportAvailable = !!navigator.webkitGetGamepads || !!navigator.webkitGamepads	;
 	if (gamepadSupportAvailable) {
 	    var gamepad = navigator.getGamepads()[0]
 		document.write("Supported");
           socket.send('Supported')    } 		  
 		else {
           document.write('Not Supported');
-	};
+	};      */
 	
 var fps = 100;
 var myReq;
