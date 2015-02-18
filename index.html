@@ -32,9 +32,10 @@
     <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+	<script src="gloop.js"></script>
     <script type=text/javascript>	
 	
-    var socket = io.connect('http://localhost:8080');   
+    var socket = io.connect('192.168.0.13:8080');   
 	
 /*  var gamepadSupportAvailable = !!navigator.webkitGetGamepads || !!navigator.webkitGamepads	;
 	if (gamepadSupportAvailable) {
@@ -45,7 +46,7 @@
           document.write('Not Supported');
 	};      */
 	
-var fps = 100;
+/*var fps = 100;
 var myReq;
 var myVar;
 	function gameLoop() {
@@ -67,7 +68,7 @@ var myVar;
     };
 	
 
-
+*/
     </script>
   </body>
 </html>

@@ -17,7 +17,6 @@ app.get('/', function (req, res) {
 
 // allow commands to be send via http call - GET only accepts command
 app.get('/command/', function (req, res) {
-  processRobotCommand (req.query.command);
   res.send('command: ' + req.query.command);
   
   // Eventually replace with json so commands can be sent back
