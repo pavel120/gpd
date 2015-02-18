@@ -9,19 +9,6 @@ http.listen(8080, function(){
   console.log('Starting server, listening on *:8080');
 });
 
-app.use(express.static(__dirname + '/public'));
-
-app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/index.html');
-});
-
-// allow commands to be send via http call - GET only accepts command
-app.get('/command/', function (req, res) {
-  res.send('command: ' + req.query.command);
-  
-  // Eventually replace with json so commands can be sent back
-  res.json({ 'state': serverStatus.currentAI });
-});
   
 io.on('connection', function (socket) {
   console.log('A user has connected ');
