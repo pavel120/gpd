@@ -2,7 +2,11 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-
+var SerialPort = require("serialport").SerialPort
+var portName = '/dev/ttyACM0';
+var sp = new SerialPort(portName, {
+   baudrate: 9600,
+});
 
 // Start server
 http.listen(8080, function(){
@@ -21,5 +25,6 @@ io.on('connection', function (socket) {
     socket.on('message', function (message) {
 	//var updatedData = data.data;	
     console.log(message);
+	sp.Write(message);
   });
 });
