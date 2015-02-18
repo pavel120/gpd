@@ -25,6 +25,6 @@ io.on('connection', function (socket) {
     socket.on('message', function (message) {
 	//var updatedData = data.data;	
     console.log(message);
-	serialPort.Write(message);
+	sp.Write(message);
   });
 });
