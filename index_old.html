@@ -3,46 +3,32 @@
   <head>
     <title>HW ROV</title>
     <meta charset="utf-8">
-      <link href="stylesheet.css" rel="stylesheet">
-      
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet">
   </head>
   <body>
-<div id="wrapper" >
-
-    <div class= "left" id="systemstatus">
-
-        <h1>System Status</h1>
-         
-        <button type="button" class="cbutton" onclick="window.requestAnimationFrame(gameLoop)">Connect Controller</button>      
-    
-        <h3>CONTENT HERE↓</h3>
-        
+    <div class="navbar navbar-static-top navbar-default">
+      <div class="container">
+        <button class="navbar-toggle">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">HW Remotely Operated Underwater Vehicle</a>
+        <div class="nav-collapse">
+        </div><!--/.nav-collapse -->
+      </div>
     </div>
-      
-
-    <div class= "left" id="video">
-          
-	  <h1>Video Feed</h1>
-      <img alt= "MJPG Streamer" src="http://192.168.0.17:9000/?action=stream" width="640" height="480" />   
-
-    </div>
+	 <div>
+	  <h1>MJPG Video</h1>
+      <img alt= "MJPG Streamer" src="http://192.168.0.17:9000/?action=stream" width="640" height="480" />
+	 </div>
 	 
-    <div class= "left" id="sensordata">
-    
-       <h1>Sensor Data</h1>
-        
-        
-        <h3>CONTENT HERE↓</h3>
-        
-        
-        
-    </div>        
-    
+    <br> 
+	<button type="button" onclick="window.requestAnimationFrame(gameLoop)">Connect Controller</button>
 
-</div>  
-    
-    
-    
+
 
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
@@ -59,7 +45,7 @@
           socket.send('Supported')    } 		  
 		else {
           document.write('Not Supported');
-	};      
+	};      */
 	
 var fps = 100;
 var myReq;
@@ -81,7 +67,9 @@ var myVar;
 			gamepad.buttons[4].value+'\n');       
 	      }, 1000 / fps);
     };
-	*/
+	
+
+
     </script>
   </body>
 </html>
