@@ -1,3 +1,32 @@
+#controlwrapper
+{
+    height: 300px;
+    width: 300px;
+    margin: auto;
+}
+
+
+.a { 	display: block;
+	float: left; 	 }
+
+
+.d { 	display: block;
+	float: right;     }
+
+
+.w {  	margin: auto;
+	display: block;    }
+
+
+.s { 
+    margin: auto;
+    position: absolute;
+	display: block;
+    padding-top: 95px;
+    padding-left: 102px;
+   }
+
+
 h1,
 h2,
 h3,
@@ -14,6 +43,15 @@ body {
     
 }
 
+#consup,
+#concon
+{
+    display: inline-block;
+    margin: auto;
+    padding-left:20px;
+}
+
+#concon {padding-right:20px;}
 
 .vid
 {
