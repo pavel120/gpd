@@ -3,7 +3,7 @@
   <head>
     <title>HW ROV</title>
     <meta charset="utf-8">
-      <link href="/stylesheet.css" rel="stylesheet">
+      <link href="stylesheet.css" rel="stylesheet">
       
   </head>
   <body>
@@ -18,12 +18,12 @@
         <br>
         
         <div id="consup">
-            <h3>Not Supported</h3>
+            <h3 id="conSuup">Not Supported</h3>
             
         </div>
         
         <div id="concon">
-            <h3>Not Connected</h3>
+            <h3 id="conCoon">Not Connected</h3>
             
         </div>
         
@@ -31,7 +31,7 @@
         <div id="controlwrapper">
             
 
-            <img src="images/w.png" class="w" >      
+            <img id="wup" src="images/w.png" class="w" >      
 
 
             <img src="images/s.png" class="s" >
@@ -83,16 +83,35 @@
     <script src="/socket.io/socket.io.js"></script>
     <script type=text/javascript>	
 	
-    var socket = io.connect('192.168.0.17:8080');   
+    //var socket = io.connect('192.168.0.17:8080');   
 	
-/*  var gamepadSupportAvailable = !!navigator.webkitGetGamepads || !!navigator.webkitGamepads	;
+  var gamepadSupportAvailable = navigator.getGamepads || !!navigator.webkitGetGamepads || !!navigator.webkitGamepads	;
+  var gamepad = navigator.getGamepads()[0] ;
+  
 	if (gamepadSupportAvailable) {
-	    var gamepad = navigator.getGamepads()[0]
-		document.write("Supported");
-          socket.send('Supported')    } 		  
+		document.getElementById("conSuup").innerHTML = "Supported";
+		document.getElementById("conSuup").style.color = "green";
+								}  
 		else {
-          document.write('Not Supported');
-	};   */    
+		document.getElementById("conSuup").innerHTML = "Not Supported";
+		document.getElementById("conSuup").style.color = "red";
+			};    
+			 
+	if (gamepad) {
+		document.getElementById("conCoon").innerHTML = "Connected";
+		document.getElementById("conCoon").style.color = "green";			
+								 } 
+		else {
+		document.getElementById("conCoon").innerHTML = "Not Connected";
+		document.getElementById("conCoon").style.color = "red";
+			};   
+			  
+	$(document).keydown(function (e) {
+    if (e.keyCode == 87) {
+		document.getElementById("wup").style.opacity = "0.3";
+		
+    }
+});		  
 	
 var fps = 5;
 var myReq;
@@ -100,7 +119,7 @@ var myVar;
 	function gameLoop() {
 	  myVar = setTimeout(function() {
 	  myReq = window.requestAnimationFrame(gameLoop);
-    var gamepad = navigator.getGamepads()[0] ;
+      gamepad = navigator.getGamepads()[0] ;
 	  //        socket.send(gamepad)
 	  var joyrx = Math.round((gamepad.axes[2] + 1)*255);
 	  var joyry = Math.round((gamepad.axes[3] + 1)*255);
